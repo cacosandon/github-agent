@@ -43,7 +43,10 @@ class GithubTools:
         except UnknownObjectException:
             return "Repository not found. Please use the exact name."
 
-        return repository.get_pulls(state=state, sort=sort, direction=direction).get_page(0)[:10]
+        return (
+            f"The pull requests of the repository {repository_name} are: "
+            f"{repository.get_pulls(state=state, sort=sort, direction=direction).get_page(0)[:10]}"
+        )
 
     def get_repository_pull_request_information(
         self, repository_name: str, pull_request_number: int
@@ -79,10 +82,11 @@ class GithubTools:
         state: str,
         sort: str = "created",
         direction: str = "desc",
+        page: int = 0,
     ) -> List[PullRequest] | str:
         """
         A tool to search Github issues by repository name, state and sorted by params.
-        Returns list of max 10 issues.
+        Returns issues with their names and issue numbers.
         """
 
         try:
@@ -90,12 +94,15 @@ class GithubTools:
         except UnknownObjectException:
             return "Repository not found. Please use the exact name."
 
-        return repository.get_issues(state=state, sort=sort, direction=direction).get_page(0)[:10]
+        return (
+            f"The issues of repository {repository_name} are: "
+            f"{repository.get_issues(state=state, sort=sort, direction=direction).get_page(page)}"
+        )
 
     def get_repository_issue_information(self, repository_name: str, issue_number: int) -> str:
         """
-        A tool to search Github issue information by repository name and issue number.
-        Useful when you need to answer something about an issue.
+        A tool to get Github issue data by repository name and issue number.
+        Useful when you need to know more about a specific issue.
         Returns issue information.
         """
 
@@ -116,3 +123,25 @@ class GithubTools:
             f"Owner: {issue.user.login}\n"
             f"Collaborators: {[collaborator.login for collaborator in issue.assignees]}\n"
         )
+
+    def comment_in_repository_issue(
+        self, repository_name: str, issue_number: int, comment: str
+    ) -> str:
+        """
+        A tool to comment in a Github issue by repository name, issue number and comment.
+        Returns comment information.
+        """
+
+        try:
+            repository = self.github_service.get_repo(repository_name)
+        except UnknownObjectException:
+            return "Repository not found. Please use the exact name."
+
+        try:
+            issue = repository.get_issue(issue_number)
+        except UnknownObjectException:
+            return "Issue not found. Please use the exact number."
+
+        issue.create_comment(body=comment)
+
+        return f"Commented in issue {issue_number} in repository {repository_name}."
