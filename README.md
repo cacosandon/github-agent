@@ -3,6 +3,10 @@
 Github-Agent is a test application that leverages [PyGithub](https://github.com/PyGithub/PyGithub) and [Langchain autonomous agents](https://docs.langchain.com/docs/components/agents/) to perform several tasks around the Github API.
 
 ## Demo 18 Jun 2023
+#### Fixing issues on own repos:
+https://github.com/cacosandon/github-agent/assets/30879716/557d0f36-ac71-46de-9307-da58610b10e7
+
+#### Browsing and reasoning on public repos:
 https://github.com/cacosandon/github-agent/assets/30879716/d93731b9-18c2-49c5-8981-6931d21cec4a
 
 ## 🧪 Features
