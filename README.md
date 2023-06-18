@@ -17,6 +17,6 @@ https://github.com/cacosandon/github-agent/assets/30879716/1826b053-5eee-4208-aa
 
 2. Fill `OPENAI_API_KEY` and `GITHUB_TOKEN` (optional) in `main.py` with your tokens. Github token is not necessary. Adding your Github token allows you to increase the API limit rate and also give access to your repositories.
 
-3. Create an environment and install dependencies with `poetry shell && poetry install`
+3. Create an environment and install dependencies with `poetry shell` + `poetry install`
 
 4. Run `python main.py`
