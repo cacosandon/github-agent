@@ -16,11 +16,22 @@ SERPAPI_API_KEY = os.environ.get("SERPAPI_API_KEY")
 
 github_functions = GithubTools(token=GITHUB_TOKEN)
 tools = [
-    StructuredTool.from_function(github_functions.search_repositories),
-    StructuredTool.from_function(github_functions.get_repository_pull_requests),
-    StructuredTool.from_function(github_functions.get_repository_pull_request_information),
-    StructuredTool.from_function(github_functions.get_repository_issues),
-    StructuredTool.from_function(github_functions.get_repository_issue_information),
+    StructuredTool.from_function(
+        github_functions.search_repositories, name="Search for repositories"
+    ),
+    StructuredTool.from_function(
+        github_functions.get_repository_pull_requests, name="Get repository pull requests"
+    ),
+    StructuredTool.from_function(
+        github_functions.get_repository_pull_request_information,
+        name="Get repository pull request information",
+    ),
+    StructuredTool.from_function(
+        github_functions.get_repository_issues, name="Get repository issues"
+    ),
+    StructuredTool.from_function(
+        github_functions.get_repository_issue_information, name="Get repository issue information"
+    ),
 ]
 
 if SERPAPI_API_KEY:
