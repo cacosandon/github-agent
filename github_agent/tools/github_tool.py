@@ -123,3 +123,25 @@ class GithubTools:
             f"Owner: {issue.user.login}\n"
             f"Collaborators: {[collaborator.login for collaborator in issue.assignees]}\n"
         )
+
+    def comment_in_repository_issue(
+        self, repository_name: str, issue_number: int, comment: str
+    ) -> str:
+        """
+        A tool to comment in a Github issue by repository name, issue number and comment.
+        Returns comment information.
+        """
+
+        try:
+            repository = self.github_service.get_repo(repository_name)
+        except UnknownObjectException:
+            return "Repository not found. Please use the exact name."
+
+        try:
+            issue = repository.get_issue(issue_number)
+        except UnknownObjectException:
+            return "Issue not found. Please use the exact number."
+
+        issue.create_comment(body=comment)
+
+        return f"Commented in issue {issue_number} in repository {repository_name}."

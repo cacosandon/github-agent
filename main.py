@@ -32,6 +32,9 @@ tools = [
     StructuredTool.from_function(
         github_functions.get_repository_issue_information, name="Get repository issue information"
     ),
+    StructuredTool.from_function(
+        github_functions.comment_in_repository_issue, name="Comment in repository issue"
+    ),
 ]
 
 if SERPAPI_API_KEY:
