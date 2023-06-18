@@ -13,9 +13,11 @@ https://github.com/cacosandon/github-agent/assets/30879716/d93731b9-18c2-49c5-89
 - Search the internet to solve issues or search for projects.
 
 ## How to use
+> 🚨 **Warning**: Please exercise moderation when utilizing it as the agent is highly volatile and may engage in undesired behaviors (such as commenting multiple issues on your behalf).
+
 1. `git clone https://github.com/cacosandon/github-agent/tree/main`
 
-2. Fill `OPENAI_API_KEY`, `GITHUB_TOKEN` (optional) and `SERPAPI_API_KEY` (optional) in a `.env` file with your tokens. Github token is not necessary. Adding your Github token allows you to increase the API limit rate and also give access to your repositories.
+2. Fill `OPENAI_API_KEY`, `GITHUB_TOKEN` and `SERPAPI_API_KEY` (optional) in a `.env` file with your tokens.
 
 3. Create an environment and install dependencies with `poetry shell` + `poetry install`
 

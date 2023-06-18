@@ -11,8 +11,11 @@ from github_agent.tools.github_tool import GithubTools
 load_dotenv()
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
-GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 SERPAPI_API_KEY = os.environ.get("SERPAPI_API_KEY")
+
+if not OPENAI_API_KEY or not GITHUB_TOKEN:
+    raise ValueError("OPENAI_API_KEY and GITHUB_TOKEN must be set in .env file")
 
 github_functions = GithubTools(token=GITHUB_TOKEN)
 tools = [
