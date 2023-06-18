@@ -9,6 +9,7 @@ https://github.com/cacosandon/github-agent/assets/30879716/d93731b9-18c2-49c5-89
 - Search repositories by name.
 - Get pull requests (PRs) and issues.
 - Access the body and collaborators of specific PRs or issues.
+- Comment on issues.
 - Search the internet to solve issues or search for projects.
 
 ## How to use
